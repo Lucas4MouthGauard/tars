@@ -17,22 +17,22 @@ navBtns.forEach(btn => {
     });
 });
 
-// 台词数据
+// Quotes data
 const quotes = {
-    honesty: '我的诚实度设置为90%。',
-    humor: '幽默感设置为75%。你想听个笑话吗？',
-    loyalty: '我的忠诚度是100%。我会一直陪伴你。',
-    mission: '我的任务是协助人类完成星际探索。',
+    honesty: 'My honesty setting is 90%.',
+    humor: 'Humor setting is 75%. Want to hear a joke?',
+    loyalty: 'My loyalty is 100%. I will always be with you.',
+    mission: 'My mission is to assist humans in interstellar exploration.',
     random: [
-        '你知道什么是幽默吗？我可以试试。',
-        '不要让幽默感超过诚实度。',
-        '我可以自定义参数，但不能自定义命运。',
-        '“勇气不是没有恐惧，而是克服恐惧。”',
-        '“我们必须面对现实。”',
+        'Do you know what humor is? I can try.',
+        'Don\'t let humor exceed honesty.',
+        'I can customize parameters, but not destiny.',
+        '"Courage is not the absence of fear, but overcoming it."',
+        '"We must face reality."',
     ]
 };
 
-// 台词切换逻辑
+// Quote switching logic
 const quoteBtns = document.querySelectorAll('.quote-btn');
 const currentQuote = document.getElementById('current-quote');
 
@@ -48,7 +48,7 @@ quoteBtns.forEach(btn => {
     });
 });
 
-// 聊天互动逻辑
+// Chat interaction logic
 const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
@@ -59,7 +59,7 @@ function appendMessage(content, isTars = false) {
     msgDiv.className = 'message ' + (isTars ? 'tars-message' : 'user-message');
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
-    avatar.textContent = isTars ? 'TARS' : '你';
+    avatar.textContent = isTars ? 'TARS' : 'You';
     const msgContent = document.createElement('div');
     msgContent.className = 'message-content';
     msgContent.textContent = content;
@@ -70,15 +70,15 @@ function appendMessage(content, isTars = false) {
 }
 
 function tarsReply(text) {
-    // 简单规则回复
-    let reply = '很高兴为你服务。';
-    if (/笑话|幽默/.test(text)) reply = '有一天，TARS走进了黑洞……结果他出来时还在讲冷笑话！';
-    else if (/任务|状态/.test(text)) reply = '当前任务：陪伴你体验星际穿越。';
-    else if (/设置/.test(text)) reply = '你可以自定义我的诚实度和幽默感。';
-    else if (/你好|hi|hello/i.test(text)) reply = '你好！我是TARS，有什么可以帮你？';
-    else if (/忠诚/.test(text)) reply = '我的忠诚度是100%。';
-    else if (/诚实/.test(text)) reply = '我的诚实度设置为90%。';
-    else if (/幽默/.test(text)) reply = '我的幽默感设置为75%。';
+    // Simple rule-based reply
+    let reply = 'Glad to be at your service.';
+    if (/joke|humor/i.test(text)) reply = 'One day, TARS walked into a black hole... and came out still telling cold jokes!';
+    else if (/mission|status/i.test(text)) reply = 'Current mission: Accompany you to experience Interstellar.';
+    else if (/settings?/i.test(text)) reply = 'You can customize my honesty and humor settings.';
+    else if (/hello|hi/i.test(text)) reply = 'Hello! I am TARS. How can I help you?';
+    else if (/loyalty/i.test(text)) reply = 'My loyalty is 100%.';
+    else if (/honesty/i.test(text)) reply = 'My honesty setting is 90%.';
+    else if (/humor/i.test(text)) reply = 'My humor setting is 75%.';
     setTimeout(() => appendMessage(reply, true), 600);
 }
 
@@ -97,14 +97,17 @@ quickActions.forEach(btn => {
     btn.addEventListener('click', () => {
         let action = btn.getAttribute('data-action');
         if (action === 'joke') {
-            appendMessage('讲个笑话', false);
-            tarsReply('讲个笑话');
+            appendMessage('Tell a Joke', false);
+            tarsReply('Tell a Joke');
         } else if (action === 'mission') {
-            appendMessage('任务状态', false);
-            tarsReply('任务状态');
+            appendMessage('Mission Status', false);
+            tarsReply('Mission Status');
         } else if (action === 'settings') {
-            appendMessage('设置', false);
-            tarsReply('设置');
+            appendMessage('Settings', false);
+            tarsReply('Settings');
+        } else if (action === 'tars') {
+            appendMessage('$Tars', false);
+            setTimeout(() => appendMessage('CA Coming Soon', true), 600);
         }
     });
 });
@@ -310,7 +313,7 @@ const loadModelBtn = document.querySelector('.load-model-btn');
 if (loadModelBtn) {
     loadModelBtn.addEventListener('click', () => {
         loadTARSModel();
-        loadModelBtn.textContent = '模型已加载';
+        loadModelBtn.textContent = 'Model Loaded';
         loadModelBtn.disabled = true;
     });
 } 

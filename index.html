@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TARS - 星际穿越智能助手</title>
+    <title>TARS - Interstellar Experience Assistant</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
 </head>
@@ -14,18 +14,18 @@
     <header class="header">
         <div class="logo">
             <h1>TARS</h1>
-            <p>人工智能助手</p>
+            <p>AI Assistant</p>
         </div>
         <nav class="nav">
-            <button class="nav-btn active" data-section="home">首页</button>
-            <button class="nav-btn" data-section="model">3D模型</button>
-            <button class="nav-btn" data-section="quotes">经典台词</button>
-            <button class="nav-btn" data-section="interaction">互动体验</button>
+            <button class="nav-btn active" data-section="home">Home</button>
+            <button class="nav-btn" data-section="model">3D Model</button>
+            <button class="nav-btn" data-section="quotes">Quotes</button>
+            <button class="nav-btn" data-section="interaction">Interact</button>
         </nav>
     </header>
 
     <main class="main-content">
-        <!-- 首页部分 -->
+        <!-- Home Section -->
         <section id="home" class="section active">
             <div class="hero">
                 <div class="tars-avatar">
@@ -36,96 +36,99 @@
                     </div>
                 </div>
                 <div class="hero-text">
-                    <h2>欢迎来到TARS的世界</h2>
-                    <p>来自《星际穿越》的人工智能助手</p>
+                    <h2>Welcome to the World of TARS</h2>
+                    <p>The AI assistant from Interstellar</p>
                     <div class="stats">
                         <div class="stat">
                             <span class="stat-number">90%</span>
-                            <span class="stat-label">诚实度</span>
+                            <span class="stat-label">Honesty</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">75%</span>
-                            <span class="stat-label">幽默感</span>
+                            <span class="stat-label">Humor</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">100%</span>
-                            <span class="stat-label">忠诚度</span>
+                            <span class="stat-label">Loyalty</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3D模型部分 -->
+        <!-- 3D Model Section -->
         <section id="model" class="section">
             <div class="model-container">
-                <h2>TARS 3D模型</h2>
+                <h2>TARS 3D Model</h2>
                 <div class="model-viewer">
                     <div class="model-placeholder">
                         <div class="loading-spinner"></div>
-                        <p>正在加载TARS模型...</p>
-                        <button class="load-model-btn">载入模型</button>
+                        <p>Loading TARS model...</p>
+                        <button class="load-model-btn">Load Model</button>
                     </div>
                 </div>
                 <div class="model-controls">
-                    <button class="control-btn" data-action="rotate">旋转</button>
-                    <button class="control-btn" data-action="zoom">缩放</button>
-                    <button class="control-btn" data-action="reset">重置</button>
+                    <button class="control-btn" data-action="rotate">Rotate</button>
+                    <button class="control-btn" data-action="zoom">Zoom</button>
+                    <button class="control-btn" data-action="reset">Reset</button>
                 </div>
             </div>
         </section>
 
-        <!-- 经典台词部分 -->
+        <!-- Quotes Section -->
         <section id="quotes" class="section">
             <div class="quotes-container">
-                <h2>TARS经典台词</h2>
+                <h2>TARS Classic Quotes</h2>
                 <div class="quote-display">
                     <div class="quote-text" id="current-quote">
-                        我的诚实度设置为90%。
+                        My honesty setting is 90%.
                     </div>
                     <div class="quote-author">- TARS</div>
                 </div>
                 <div class="quote-controls">
-                    <button class="quote-btn" data-quote="honesty">诚实度</button>
-                    <button class="quote-btn" data-quote="humor">幽默感</button>
-                    <button class="quote-btn" data-quote="loyalty">忠诚度</button>
-                    <button class="quote-btn" data-quote="mission">任务</button>
-                    <button class="quote-btn" data-quote="random">随机台词</button>
+                    <button class="quote-btn" data-quote="honesty">Honesty</button>
+                    <button class="quote-btn" data-quote="humor">Humor</button>
+                    <button class="quote-btn" data-quote="loyalty">Loyalty</button>
+                    <button class="quote-btn" data-quote="mission">Mission</button>
+                    <button class="quote-btn" data-quote="random">Random Quote</button>
                 </div>
             </div>
         </section>
 
-        <!-- 互动体验部分 -->
+        <!-- Interaction Section -->
         <section id="interaction" class="section">
             <div class="interaction-container">
-                <h2>与TARS互动</h2>
+                <h2>Interact with TARS</h2>
                 <div class="chat-interface">
                     <div class="chat-messages" id="chat-messages">
                         <div class="message tars-message">
                             <div class="message-avatar">TARS</div>
                             <div class="message-content">
-                                你好！我是TARS，有什么可以帮助你的吗？
+                                Hello! I am TARS. How can I help you?
                             </div>
                         </div>
                     </div>
                     <div class="chat-input">
-                        <input type="text" id="user-input" placeholder="输入你的问题...">
-                        <button id="send-btn">发送</button>
+                        <input type="text" id="user-input" placeholder="Type your question...">
+                        <button id="send-btn">Send</button>
                     </div>
                 </div>
                 <div class="quick-actions">
-                    <button class="action-btn" data-action="joke">讲个笑话</button>
-                    <button class="action-btn" data-action="mission">任务状态</button>
-                    <button class="action-btn" data-action="settings">设置</button>
+                    <button class="action-btn" data-action="joke">Tell a Joke</button>
+                    <button class="action-btn" data-action="mission">Mission Status</button>
+                    <button class="action-btn" data-action="settings">Settings</button>
+                    <button class="action-btn" data-action="tars">$Tars</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p style="display:inline-block;margin-right:1em;">© 2024 TARS - 星际穿越体验</p>
-        <a id="footer-x-link" href="#" style="display:inline-block;text-decoration:none;font-size:1.2em;vertical-align:middle;">
-            <span style="font-weight:bold;font-family:sans-serif;">✖</span>
+        <p style="display:inline-block;margin-right:1em;">© 2024 TARS - Interstellar Experience</p>
+        <a id="footer-x-link" href="https://x.com/sol_Tars" target="_blank" style="display:inline-block;text-decoration:none;font-size:1.2em;vertical-align:middle;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;">
+                <path d="M22.162 5.656c-.793.352-1.646.59-2.54.697a4.48 4.48 0 0 0 1.962-2.475 8.94 8.94 0 0 1-2.828 1.082A4.466 4.466 0 0 0 15.448 4c-2.47 0-4.472 2.003-4.472 4.472 0 .35.04.692.116 1.02C7.25 9.33 4.1 7.7 1.97 5.2c-.384.66-.604 1.426-.604 2.244 0 1.548.788 2.915 1.99 3.717a4.45 4.45 0 0 1-2.026-.56v.057c0 2.163 1.54 3.97 3.584 4.378-.375.102-.77.157-1.178.157-.288 0-.566-.028-.838-.08.567 1.77 2.213 3.06 4.166 3.094A8.96 8.96 0 0 1 2 19.54a12.66 12.66 0 0 0 6.85 2.008c8.22 0 12.727-6.81 12.727-12.727 0-.194-.004-.388-.013-.58A9.09 9.09 0 0 0 24 4.59a8.98 8.98 0 0 1-2.538.696z" fill="#1DA1F2"/>
+            </svg>
         </a>
     </footer>
 
