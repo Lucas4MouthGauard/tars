@@ -317,3 +317,96 @@ if (loadModelBtn) {
         loadModelBtn.disabled = true;
     });
 } 
+
+// Web3 Wallet Connection
+let provider, signer, walletAddress;
+
+const connectWalletBtn = document.getElementById('connect-wallet-btn');
+
+async function connectWallet() {
+    try {
+        // Check if MetaMask is installed
+        if (typeof window.ethereum === 'undefined') {
+            alert('Please install MetaMask to connect your wallet!');
+            return;
+        }
+
+        // Request account access
+        const accounts = await window.ethereum.request({ 
+            method: 'eth_requestAccounts' 
+        });
+
+        if (accounts.length > 0) {
+            walletAddress = accounts[0];
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            signer = provider.getSigner();
+            
+            // Update button
+            connectWalletBtn.textContent = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+            connectWalletBtn.classList.add('connected');
+            
+            // Add disconnect functionality
+            connectWalletBtn.onclick = disconnectWallet;
+            
+            console.log('Wallet connected:', walletAddress);
+            
+            // Listen for account changes
+            window.ethereum.on('accountsChanged', handleAccountsChanged);
+        }
+    } catch (error) {
+        console.error('Error connecting wallet:', error);
+        alert('Failed to connect wallet. Please try again.');
+    }
+}
+
+function disconnectWallet() {
+    walletAddress = null;
+    provider = null;
+    signer = null;
+    
+    // Reset button
+    connectWalletBtn.textContent = 'Connect Wallet';
+    connectWalletBtn.classList.remove('connected');
+    connectWalletBtn.onclick = connectWallet;
+    
+    console.log('Wallet disconnected');
+}
+
+function handleAccountsChanged(accounts) {
+    if (accounts.length === 0) {
+        // User disconnected wallet
+        disconnectWallet();
+    } else if (accounts[0] !== walletAddress) {
+        // User switched accounts
+        walletAddress = accounts[0];
+        connectWalletBtn.textContent = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+        console.log('Account changed to:', walletAddress);
+    }
+}
+
+// Initialize wallet connection
+connectWalletBtn.addEventListener('click', connectWallet);
+
+// Check if wallet is already connected on page load
+window.addEventListener('load', async () => {
+    if (typeof window.ethereum !== 'undefined') {
+        try {
+            const accounts = await window.ethereum.request({ 
+                method: 'eth_accounts' 
+            });
+            if (accounts.length > 0) {
+                walletAddress = accounts[0];
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                
+                connectWalletBtn.textContent = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+                connectWalletBtn.classList.add('connected');
+                connectWalletBtn.onclick = disconnectWallet;
+                
+                window.ethereum.on('accountsChanged', handleAccountsChanged);
+            }
+        } catch (error) {
+            console.error('Error checking wallet connection:', error);
+        }
+    }
+}); 

@@ -60,6 +60,35 @@ body {
   box-shadow: 0 2px 8px #00d4ff44;
 }
 
+.wallet-btn {
+  background: linear-gradient(45deg, #00d4ff, #ffe066);
+  border: none;
+  color: #222;
+  padding: 0.5em 1.5em;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+}
+
+.wallet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+}
+
+.wallet-btn.connected {
+  background: linear-gradient(45deg, #00ff88, #00d4ff);
+  color: #222;
+}
+
+.wallet-btn.connected:hover {
+  background: linear-gradient(45deg, #00ff88, #00d4ff);
+  transform: translateY(-1px);
+}
+
 .main-content {
   margin-top: 100px;
   z-index: 1;
