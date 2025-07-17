@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TARS - 星际穿越智能助手</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <header class="header">
+        <div class="logo">
+            <h1>TARS</h1>
+            <p>人工智能助手</p>
+        </div>
+        <nav class="nav">
+            <button class="nav-btn active" data-section="home">首页</button>
+            <button class="nav-btn" data-section="model">3D模型</button>
+            <button class="nav-btn" data-section="quotes">经典台词</button>
+            <button class="nav-btn" data-section="interaction">互动体验</button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- 首页部分 -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="tars-avatar">
+                    <div class="tars-face">
+                        <div class="eye left-eye"></div>
+                        <div class="eye right-eye"></div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <h2>欢迎来到TARS的世界</h2>
+                    <p>来自《星际穿越》的人工智能助手</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">90%</span>
+                            <span class="stat-label">诚实度</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">75%</span>
+                            <span class="stat-label">幽默感</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">忠诚度</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D模型部分 -->
+        <section id="model" class="section">
+            <div class="model-container">
+                <h2>TARS 3D模型</h2>
+                <div class="model-viewer">
+                    <div class="model-placeholder">
+                        <div class="loading-spinner"></div>
+                        <p>正在加载TARS模型...</p>
+                        <button class="load-model-btn">载入模型</button>
+                    </div>
+                </div>
+                <div class="model-controls">
+                    <button class="control-btn" data-action="rotate">旋转</button>
+                    <button class="control-btn" data-action="zoom">缩放</button>
+                    <button class="control-btn" data-action="reset">重置</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 经典台词部分 -->
+        <section id="quotes" class="section">
+            <div class="quotes-container">
+                <h2>TARS经典台词</h2>
+                <div class="quote-display">
+                    <div class="quote-text" id="current-quote">
+                        我的诚实度设置为90%。
+                    </div>
+                    <div class="quote-author">- TARS</div>
+                </div>
+                <div class="quote-controls">
+                    <button class="quote-btn" data-quote="honesty">诚实度</button>
+                    <button class="quote-btn" data-quote="humor">幽默感</button>
+                    <button class="quote-btn" data-quote="loyalty">忠诚度</button>
+                    <button class="quote-btn" data-quote="mission">任务</button>
+                    <button class="quote-btn" data-quote="random">随机台词</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 互动体验部分 -->
+        <section id="interaction" class="section">
+            <div class="interaction-container">
+                <h2>与TARS互动</h2>
+                <div class="chat-interface">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message tars-message">
+                            <div class="message-avatar">TARS</div>
+                            <div class="message-content">
+                                你好！我是TARS，有什么可以帮助你的吗？
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="user-input" placeholder="输入你的问题...">
+                        <button id="send-btn">发送</button>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn" data-action="joke">讲个笑话</button>
+                    <button class="action-btn" data-action="mission">任务状态</button>
+                    <button class="action-btn" data-action="settings">设置</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p style="display:inline-block;margin-right:1em;">© 2024 TARS - 星际穿越体验</p>
+        <a id="footer-x-link" href="#" style="display:inline-block;text-decoration:none;font-size:1.2em;vertical-align:middle;">
+            <span style="font-weight:bold;font-family:sans-serif;">✖</span>
+        </a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128.0/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
