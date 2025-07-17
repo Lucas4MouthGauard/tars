@@ -107,7 +107,7 @@ quickActions.forEach(btn => {
             tarsReply('Settings');
         } else if (action === 'tars') {
             appendMessage('$Tars', false);
-            setTimeout(() => appendMessage('CA Coming Soon', true), 600);
+            setTimeout(() => appendMessage('EfdkN7hVxyLWPyqD7VvbxLJtDMAPt1QES6RrpYysbonk', true), 600);
         }
     });
 });
