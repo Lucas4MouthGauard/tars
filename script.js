@@ -318,69 +318,69 @@ if (loadModelBtn) {
     });
 } 
 
-// Web3 Wallet Connection
-let provider, signer, walletAddress;
+// Solana Wallet Connection
+let connection, wallet, walletAddress;
 
 const connectWalletBtn = document.getElementById('connect-wallet-btn');
 
 async function connectWallet() {
     try {
-        // Check if MetaMask is installed
-        if (typeof window.ethereum === 'undefined') {
-            alert('Please install MetaMask to connect your wallet!');
+        // Check if Phantom wallet is installed
+        if (!window.solana || !window.solana.isPhantom) {
+            alert('Please install Phantom wallet to connect!');
             return;
         }
 
-        // Request account access
-        const accounts = await window.ethereum.request({ 
-            method: 'eth_requestAccounts' 
-        });
-
-        if (accounts.length > 0) {
-            walletAddress = accounts[0];
-            provider = new ethers.providers.Web3Provider(window.ethereum);
-            signer = provider.getSigner();
-            
-            // Update button
-            connectWalletBtn.textContent = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
-            connectWalletBtn.classList.add('connected');
-            
-            // Add disconnect functionality
-            connectWalletBtn.onclick = disconnectWallet;
-            
-            console.log('Wallet connected:', walletAddress);
-            
-            // Listen for account changes
-            window.ethereum.on('accountsChanged', handleAccountsChanged);
-        }
+        // Connect to wallet
+        const response = await window.solana.connect();
+        walletAddress = response.publicKey.toString();
+        
+        // Initialize connection to Solana network (mainnet-beta)
+        connection = new solanaWeb3.Connection(
+            solanaWeb3.clusterApiUrl('mainnet-beta'),
+            'confirmed'
+        );
+        
+        // Update button
+        connectWalletBtn.textContent = `${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`;
+        connectWalletBtn.classList.add('connected');
+        
+        // Add disconnect functionality
+        connectWalletBtn.onclick = disconnectWallet;
+        
+        console.log('Solana wallet connected:', walletAddress);
+        
+        // Listen for account changes
+        window.solana.on('accountChanged', handleAccountChanged);
+        
     } catch (error) {
-        console.error('Error connecting wallet:', error);
+        console.error('Error connecting Solana wallet:', error);
         alert('Failed to connect wallet. Please try again.');
     }
 }
 
 function disconnectWallet() {
     walletAddress = null;
-    provider = null;
-    signer = null;
+    connection = null;
+    wallet = null;
     
     // Reset button
     connectWalletBtn.textContent = 'Connect Wallet';
     connectWalletBtn.classList.remove('connected');
     connectWalletBtn.onclick = connectWallet;
     
-    console.log('Wallet disconnected');
+    console.log('Solana wallet disconnected');
 }
 
-function handleAccountsChanged(accounts) {
-    if (accounts.length === 0) {
+function handleAccountChanged(publicKey) {
+    if (publicKey) {
+        // User switched accounts
+        walletAddress = publicKey.toString();
+        connectWalletBtn.textContent = `${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`;
+        console.log('Solana account changed to:', walletAddress);
+    } else {
         // User disconnected wallet
         disconnectWallet();
-    } else if (accounts[0] !== walletAddress) {
-        // User switched accounts
-        walletAddress = accounts[0];
-        connectWalletBtn.textContent = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
-        console.log('Account changed to:', walletAddress);
     }
 }
 
@@ -389,24 +389,26 @@ connectWalletBtn.addEventListener('click', connectWallet);
 
 // Check if wallet is already connected on page load
 window.addEventListener('load', async () => {
-    if (typeof window.ethereum !== 'undefined') {
+    if (window.solana && window.solana.isPhantom) {
         try {
-            const accounts = await window.ethereum.request({ 
-                method: 'eth_accounts' 
-            });
-            if (accounts.length > 0) {
-                walletAddress = accounts[0];
-                provider = new ethers.providers.Web3Provider(window.ethereum);
-                signer = provider.getSigner();
+            // Check if already connected
+            if (window.solana.isConnected) {
+                const response = await window.solana.connect();
+                walletAddress = response.publicKey.toString();
                 
-                connectWalletBtn.textContent = `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+                connection = new solanaWeb3.Connection(
+                    solanaWeb3.clusterApiUrl('mainnet-beta'),
+                    'confirmed'
+                );
+                
+                connectWalletBtn.textContent = `${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`;
                 connectWalletBtn.classList.add('connected');
                 connectWalletBtn.onclick = disconnectWallet;
                 
-                window.ethereum.on('accountsChanged', handleAccountsChanged);
+                window.solana.on('accountChanged', handleAccountChanged);
             }
         } catch (error) {
-            console.error('Error checking wallet connection:', error);
+            console.error('Error checking Solana wallet connection:', error);
         }
     }
 }); 
