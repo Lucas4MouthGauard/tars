@@ -107,7 +107,7 @@ quickActions.forEach(btn => {
             tarsReply('Settings');
         } else if (action === 'tars') {
             appendMessage('$TarsAI', false);
-            setTimeout(() => appendMessage('Coming Soon', true), 600);
+            setTimeout(() => appendMessage('@https://letsbonk.fun/token/E9u2L74BKQVRFm99nQ96LTHNq8qxqh9EVY5sMjyobonk', true), 600);
         }
     });
 });
