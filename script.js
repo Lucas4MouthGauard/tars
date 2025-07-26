@@ -107,7 +107,11 @@ quickActions.forEach(btn => {
             tarsReply('Settings');
         } else if (action === 'tars') {
             appendMessage('$Tars', false);
-            setTimeout(() => appendMessage('Coming Soon', true), 600);
+            setTimeout(() => {
+                appendMessage('@https://letsbonk.fun/token/CPXsSRFjegXF8fvLVKFLgHofPD9UpugsBTUnYXDnbonk', true);
+                // 在新标签页中打开链接
+                window.open('https://letsbonk.fun/token/CPXsSRFjegXF8fvLVKFLgHofPD9UpugsBTUnYXDnbonk', '_blank');
+            }, 600);
         }
     });
 });
