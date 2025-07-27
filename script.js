@@ -59,7 +59,7 @@ function appendMessage(content, isTars = false) {
     msgDiv.className = 'message ' + (isTars ? 'tars-message' : 'user-message');
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
-    avatar.textContent = isTars ? 'TARS' : 'You';
+    avatar.textContent = isTars ? 'VineDoge' : 'You';
     const msgContent = document.createElement('div');
     msgContent.className = 'message-content';
     msgContent.textContent = content;
@@ -70,15 +70,49 @@ function appendMessage(content, isTars = false) {
 }
 
 function tarsReply(text) {
-    // Simple rule-based reply
+    // Enhanced rule-based reply with VineDoge, Crypto, Web3, AI content
     let reply = 'Glad to be at your service.';
-    if (/joke|humor/i.test(text)) reply = 'One day, TARS walked into a black hole... and came out still telling cold jokes!';
-    else if (/mission|status/i.test(text)) reply = 'Current mission: Accompany you to experience Interstellar.';
-    else if (/settings?/i.test(text)) reply = 'You can customize my honesty and humor settings.';
-    else if (/hello|hi/i.test(text)) reply = 'Hello! I am TARS. How can I help you?';
-    else if (/loyalty/i.test(text)) reply = 'My loyalty is 100%.';
-    else if (/honesty/i.test(text)) reply = 'My honesty setting is 90%.';
-    else if (/humor/i.test(text)) reply = 'My humor setting is 75%.';
+    
+    // VineDoge specific
+    if (/joke|humor/i.test(text)) reply = 'Why did VineDoge go to the moon? Because it heard there were no taxes in space! 🚀';
+    else if (/mission|status/i.test(text)) reply = 'Current mission: Building the future of decentralized finance with VineDoge community! 🚀';
+    else if (/vinedoge|vine.*doge/i.test(text)) reply = 'VineDoge is the next generation meme coin combining the viral nature of Vine with the power of Doge! 🌱🐕';
+    else if (/token|coin/i.test(text)) reply = 'VineDoge token is built on Solana blockchain for fast, low-cost transactions. Perfect for the meme economy! 💎';
+    
+    // Crypto & Bitcoin
+    else if (/btc|bitcoin/i.test(text)) reply = 'Bitcoin is the OG crypto! But VineDoge is the future of meme coins on Solana. Both are part of the crypto revolution! ₿';
+    else if (/crypto|blockchain/i.test(text)) reply = 'Crypto is revolutionizing finance! VineDoge is part of this movement, bringing fun and community to decentralized finance! 🔗';
+    else if (/solana|sol/i.test(text)) reply = 'Solana is the perfect blockchain for VineDoge - fast, cheap, and scalable! No more high gas fees! ⚡';
+    
+    // Web3 & DeFi
+    else if (/web3|defi/i.test(text)) reply = 'Web3 is the future of the internet! VineDoge is building a community-driven ecosystem in the decentralized world! 🌐';
+    else if (/nft|non.*fungible/i.test(text)) reply = 'NFTs are changing digital ownership! Imagine VineDoge NFTs - the possibilities are endless! 🎨';
+    else if (/dao|governance/i.test(text)) reply = 'DAOs are the future of community governance! VineDoge community will have a say in the project\'s direction! 🏛️';
+    
+    // AI & Technology
+    else if (/ai|artificial.*intelligence/i.test(text)) reply = 'AI is transforming everything! I\'m an AI assistant for VineDoge, helping users navigate the crypto world! 🤖';
+    else if (/technology|tech/i.test(text)) reply = 'Technology moves fast! VineDoge combines the latest in blockchain tech with viral meme culture! 💻';
+    
+    // Social Media & Viral Content
+    else if (/vine|social.*media/i.test(text)) reply = 'Vine was revolutionary! Now VineDoge brings that viral energy to the crypto world! 📱';
+    else if (/meme|viral/i.test(text)) reply = 'Memes are the language of the internet! VineDoge speaks that language fluently! 😄';
+    
+    // General settings
+    else if (/settings?/i.test(text)) reply = 'You can customize my honesty and humor settings. I\'m here to help with all things VineDoge and crypto! ⚙️';
+    else if (/hello|hi/i.test(text)) reply = 'Hello! I am VineDoge AI assistant. How can I help you with crypto, Web3, or VineDoge today? 🚀';
+    else if (/loyalty/i.test(text)) reply = 'My loyalty is 100% to the VineDoge community! 💯';
+    else if (/honesty/i.test(text)) reply = 'My honesty setting is 90%. Always transparent about crypto risks and opportunities! 📊';
+    else if (/humor/i.test(text)) reply = 'My humor setting is 75%. Crypto can be serious, but we keep it fun! 😄';
+    
+    // Price and market related
+    else if (/price|market|chart/i.test(text)) reply = 'Check the latest VineDoge price on DEXs! Remember: DYOR (Do Your Own Research) and never invest more than you can afford to lose! 📈';
+    else if (/buy|purchase/i.test(text)) reply = 'You can buy VineDoge on Solana DEXs like Raydium or Jupiter! Always use official links and beware of scams! 🛒';
+    else if (/sell|trade/i.test(text)) reply = 'Trading crypto requires strategy! Consider your goals and risk tolerance before making decisions! 📊';
+    
+    // Community and social
+    else if (/community|social/i.test(text)) reply = 'The VineDoge community is growing fast! Join us on Twitter @Vinedoge_com and be part of the journey! 🌍';
+    else if (/roadmap|future/i.test(text)) reply = 'VineDoge has big plans! Stay tuned for updates on new features, partnerships, and ecosystem expansion! 🗺️';
+    
     setTimeout(() => appendMessage(reply, true), 600);
 }
 
@@ -102,11 +136,23 @@ quickActions.forEach(btn => {
         } else if (action === 'mission') {
             appendMessage('Mission Status', false);
             tarsReply('Mission Status');
-        } else if (action === 'settings') {
-            appendMessage('Settings', false);
-            tarsReply('Settings');
+        } else if (action === 'vinedoge') {
+            appendMessage('About VineDoge', false);
+            tarsReply('About VineDoge');
+        } else if (action === 'crypto') {
+            appendMessage('Crypto Information', false);
+            tarsReply('Crypto Information');
+        } else if (action === 'web3') {
+            appendMessage('Web3 Future', false);
+            tarsReply('Web3 Future');
+        } else if (action === 'ai') {
+            appendMessage('AI & Technology', false);
+            tarsReply('AI & Technology');
+        } else if (action === 'community') {
+            appendMessage('Community', false);
+            tarsReply('Community');
         } else if (action === 'tars') {
-            appendMessage('$Tars', false);
+            appendMessage('$VineDoge', false);
             setTimeout(() => {
                 appendMessage('@https://letsbonk.fun/token/CPXsSRFjegXF8fvLVKFLgHofPD9UpugsBTUnYXDnbonk', true);
                 // 在新标签页中打开链接
@@ -125,7 +171,7 @@ function initThreeJS() {
     
     // 创建场景
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a0a0a);
+    scene.background = new THREE.Color(0xffffff);
     
     // 创建相机
     camera = new THREE.PerspectiveCamera(75, modelViewer.clientWidth / modelViewer.clientHeight, 0.1,1000);
@@ -145,12 +191,12 @@ function initThreeJS() {
     const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
     scene.add(ambientLight);
     
-    const directionalLight = new THREE.DirectionalLight(0x00d4ff, 1);
+    const directionalLight = new THREE.DirectionalLight(0x00B484, 1);
     directionalLight.position.set(5, 5, 5);
     directionalLight.castShadow = true;
     scene.add(directionalLight);
     
-    const pointLight = new THREE.PointLight(0x00d4ff, 0.8);
+    const pointLight = new THREE.PointLight(0x00B484, 0.8);
     pointLight.position.set(-5, 5, 5);
     scene.add(pointLight);
     
@@ -172,7 +218,7 @@ function animate() {
 }
 
 function createTARSMesh() {
-    // 创建简单的TARS几何体（如果没有模型文件）
+    // 创建简单的VineDoge几何体（如果没有模型文件）
     const group = new THREE.Group();
     
     // 主体（立方体）
@@ -239,8 +285,8 @@ function loadTARSModel() {
         // 尝试加载GLTF模型，如果失败则使用几何体
         const loader = new THREE.GLTFLoader();
         
-        // 这里可以替换为实际的TARS模型文件路径
-        // loader.load('models/tars.glb', function(gltf) {
+        // 这里可以替换为实际的VineDoge模型文件路径
+        // loader.load('models/vinedoge.glb', function(gltf) {
         //     const model = gltf.scene;
         //     model.scale.set(1, 1, 1);
         //     model.position.set(0, 0, 0);
