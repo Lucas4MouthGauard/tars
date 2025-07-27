@@ -21,8 +21,7 @@
         </div>
         <nav class="nav">
             <button class="nav-btn active" data-section="home">Home</button>
-            <button class="nav-btn" data-section="model">3D Model</button>
-            <button class="nav-btn" data-section="quotes">Quotes</button>
+            <button class="nav-btn" data-section="meme">Meme Generator</button>
             <button class="nav-btn" data-section="interaction">Interact</button>
             <button id="connect-wallet-btn" class="wallet-btn" style="background: red !important; color: white !important; border: 3px solid yellow !important;">Connect Wallet</button>
         </nav>
@@ -56,44 +55,35 @@
             </div>
         </section>
 
-        <!-- 3D Model Section -->
-        <section id="model" class="section">
-            <div class="model-container">
-                <h2>VineDoge 3D Model</h2>
-                <div class="model-viewer">
-                    <div class="model-placeholder">
-                        <div class="loading-spinner"></div>
-                        <p>Loading VineDoge model...</p>
-                        <button class="load-model-btn">Load Model</button>
+        <!-- Meme Generator Section -->
+        <section id="meme" class="section">
+            <div class="meme-container">
+                <h2>VineDoge Meme Generator</h2>
+                <div class="meme-creator">
+                    <div class="meme-canvas">
+                        <div class="meme-image">
+                            <img src="assets/images/vinedoge.png" alt="VineDoge" id="meme-img">
+                            <div class="meme-text top-text" id="top-text">VINE DOGE</div>
+                            <div class="meme-text bottom-text" id="bottom-text">TO THE MOON</div>
+                        </div>
                     </div>
-                </div>
-                <div class="model-controls">
-                    <button class="control-btn" data-action="rotate">Rotate</button>
-                    <button class="control-btn" data-action="zoom">Zoom</button>
-                    <button class="control-btn" data-action="reset">Reset</button>
+                    <div class="meme-controls">
+                        <div class="input-group">
+                            <label>Top Text:</label>
+                            <input type="text" id="top-input" placeholder="Enter top text..." maxlength="20">
+                        </div>
+                        <div class="input-group">
+                            <label>Bottom Text:</label>
+                            <input type="text" id="bottom-input" placeholder="Enter bottom text..." maxlength="20">
+                        </div>
+                        <button class="generate-meme-btn">Generate Meme</button>
+                        <button class="download-meme-btn">Download Meme</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Quotes Section -->
-        <section id="quotes" class="section">
-            <div class="quotes-container">
-                <h2>VineDoge Classic Quotes</h2>
-                <div class="quote-display">
-                    <div class="quote-text" id="current-quote">
-                        My honesty setting is 90%.
-                    </div>
-                    <div class="quote-author">- VineDoge</div>
-                </div>
-                <div class="quote-controls">
-                    <button class="quote-btn" data-quote="honesty">Honesty</button>
-                    <button class="quote-btn" data-quote="humor">Humor</button>
-                    <button class="quote-btn" data-quote="loyalty">Loyalty</button>
-                    <button class="quote-btn" data-quote="mission">Mission</button>
-                    <button class="quote-btn" data-quote="random">Random Quote</button>
-                </div>
-            </div>
-        </section>
+
 
         <!-- Interaction Section -->
         <section id="interaction" class="section">
@@ -116,11 +106,6 @@
                 <div class="quick-actions">
                     <button class="action-btn" data-action="joke">Tell a Joke</button>
                     <button class="action-btn" data-action="mission">Mission Status</button>
-                    <button class="action-btn" data-action="vinedoge">About VineDoge</button>
-                    <button class="action-btn" data-action="crypto">Crypto Info</button>
-                    <button class="action-btn" data-action="web3">Web3 Future</button>
-                    <button class="action-btn" data-action="ai">AI & Tech</button>
-                    <button class="action-btn" data-action="community">Community</button>
                     <button class="action-btn" data-action="tars">$VineDoge</button>
                 </div>
             </div>
@@ -139,6 +124,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128.0/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

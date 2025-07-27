@@ -22,7 +22,6 @@ const quotes = {
     honesty: 'My honesty setting is 90%.',
     humor: 'Humor setting is 75%. Want to hear a joke?',
     loyalty: 'My loyalty is 100%. I will always be with you.',
-    mission: 'My mission is to assist humans in interstellar exploration.',
     random: [
         'Do you know what humor is? I can try.',
         'Don\'t let humor exceed honesty.',
@@ -75,7 +74,7 @@ function tarsReply(text) {
     
     // VineDoge specific
     if (/joke|humor/i.test(text)) reply = 'Why did VineDoge go to the moon? Because it heard there were no taxes in space! 🚀';
-    else if (/mission|status/i.test(text)) reply = 'Current mission: Building the future of decentralized finance with VineDoge community! 🚀';
+    else if (/mission|status/i.test(text)) reply = 'Mission: Using AI technology to revive Vine! Including AI-assisted automatic editing, script generation, voice-over, and special effects for creators! 🎬🤖';
     else if (/vinedoge|vine.*doge/i.test(text)) reply = 'VineDoge is the next generation meme coin combining the viral nature of Vine with the power of Doge! 🌱🐕';
     else if (/token|coin/i.test(text)) reply = 'VineDoge token is built on Solana blockchain for fast, low-cost transactions. Perfect for the meme economy! 💎';
     
@@ -136,21 +135,6 @@ quickActions.forEach(btn => {
         } else if (action === 'mission') {
             appendMessage('Mission Status', false);
             tarsReply('Mission Status');
-        } else if (action === 'vinedoge') {
-            appendMessage('About VineDoge', false);
-            tarsReply('About VineDoge');
-        } else if (action === 'crypto') {
-            appendMessage('Crypto Information', false);
-            tarsReply('Crypto Information');
-        } else if (action === 'web3') {
-            appendMessage('Web3 Future', false);
-            tarsReply('Web3 Future');
-        } else if (action === 'ai') {
-            appendMessage('AI & Technology', false);
-            tarsReply('AI & Technology');
-        } else if (action === 'community') {
-            appendMessage('Community', false);
-            tarsReply('Community');
         } else if (action === 'tars') {
             appendMessage('$VineDoge', false);
             setTimeout(() => {
@@ -161,6 +145,80 @@ quickActions.forEach(btn => {
         }
     });
 });
+
+// Meme Generator
+let memeGenerated = false;
+
+// Initialize meme generator
+function initMemeGenerator() {
+    const topInput = document.getElementById('top-input');
+    const bottomInput = document.getElementById('bottom-input');
+    const generateBtn = document.querySelector('.generate-meme-btn');
+    const downloadBtn = document.querySelector('.download-meme-btn');
+    
+    if (topInput && bottomInput && generateBtn && downloadBtn) {
+        generateBtn.addEventListener('click', generateMeme);
+        downloadBtn.addEventListener('click', downloadMeme);
+        
+        // Real-time preview
+        topInput.addEventListener('input', updateMemeText);
+        bottomInput.addEventListener('input', updateMemeText);
+    }
+}
+
+function updateMemeText() {
+    const topInput = document.getElementById('top-input');
+    const bottomInput = document.getElementById('bottom-input');
+    const topText = document.getElementById('top-text');
+    const bottomText = document.getElementById('bottom-text');
+    
+    if (topInput && topText) {
+        topText.textContent = topInput.value.toUpperCase() || 'VINE DOGE';
+    }
+    
+    if (bottomInput && bottomText) {
+        bottomText.textContent = bottomInput.value.toUpperCase() || 'TO THE MOON';
+    }
+}
+
+function generateMeme() {
+    const topInput = document.getElementById('top-input');
+    const bottomInput = document.getElementById('bottom-input');
+    
+    if (topInput && bottomInput) {
+        updateMemeText();
+        memeGenerated = true;
+        
+        // Add some fun animation
+        const memeImage = document.querySelector('.meme-image');
+        if (memeImage) {
+            memeImage.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                memeImage.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+}
+
+function downloadMeme() {
+    if (!memeGenerated) {
+        alert('Please generate a meme first!');
+        return;
+    }
+    
+    // Create a canvas to capture the meme
+    const memeImage = document.querySelector('.meme-image');
+    if (memeImage) {
+        html2canvas(memeImage).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'vinedoge-meme.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+}
+
+
 
 // Three.js3
 let scene, camera, renderer, mixer, clock;
@@ -461,4 +519,7 @@ window.addEventListener('load', async () => {
             console.error('Error checking Solana wallet connection:', error);
         }
     }
+    
+    // Initialize new features
+    initMemeGenerator();
 }); 
