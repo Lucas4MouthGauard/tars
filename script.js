@@ -138,9 +138,7 @@ quickActions.forEach(btn => {
         } else if (action === 'tars') {
             appendMessage('$VineDoge', false);
             setTimeout(() => {
-                appendMessage('@https://letsbonk.fun/token/CPXsSRFjegXF8fvLVKFLgHofPD9UpugsBTUnYXDnbonk', true);
-                // 在新标签页中打开链接
-                window.open('https://letsbonk.fun/token/CPXsSRFjegXF8fvLVKFLgHofPD9UpugsBTUnYXDnbonk', '_blank');
+                appendMessage('VineDoge is the future of meme coins! 🚀', true);
             }, 600);
         }
     });
